@@ -1,0 +1,115 @@
+---
+title: Why Sanebase?
+# description: "Why Sanebase?"
+---
+
+If you've ever processed real customer transactions in production, even at a small scale, you already know what a nightmare it is to stay in sync.
+
+<img
+  className="block dark:hidden p-4 border rounded-xl"
+  src="/images/x-theo-stripe-1.png"
+  alt="Tweet about Stripe"
+/>
+<img
+  className="hidden dark:block p-4 bg-[#17202A] border border-gray-800 rounded-xl"
+  src="/images/x-theo-stripe-1-dark.png"
+  alt="Tweet about Stripe"
+/>
+
+{/* PS: You can check out Theo's open source guide [here](https://github.com/t3dotgg/stripe-recommendations). */}
+
+## Webhooks &mdash; icebergs that will sink your Stripe integration
+
+Webhooks look deceptively simple at first. Wire up an endpoint to receive updates and you're done, right? Not so fast.
+
+In reality, there are so many things that can (and will) go wrong:
+
+<img
+  className="block dark:hidden"
+  src="/images/sanebase-vs-now-1.png"
+  alt="Why Sanebase?"
+/>
+<img
+  className="hidden dark:block"
+  src="/images/sanebase-vs-now-1-dark.png"
+  alt="Why Sanebase?"
+/>
+
+<Steps>
+  <Step title="Each user operation triggers a cascade of webhooks">
+    A single Stripe subscription update can fire 10+ webhooks across different
+    objects (customer, subscription, invoice, payment method). Your endpoint
+    gets flooded with partial updates.
+  </Step>
+  <Step title="Webhooks arrive out of order">
+    Stripe webhooks are not ordered, so the last webhook you receive might not
+    contain the current state. Your database ends up with stale data.
+  </Step>
+  <Step title="Webhook payloads are incomplete">
+    Most webhooks only contain the changed fields, not the complete object
+    state. You're left piecing together the full picture from multiple events.
+  </Step>
+  <Step title="Network failures create data inconsistencies">
+    When your server is down or times out, you miss critical updates. Your
+    internal state drifts from the source of truth.
+  </Step>
+  <Step title="Debugging webhook issues is a nightmare">
+    Failed webhooks, duplicate events, and missing data create support tickets
+    that are hard to trace and fix.
+  </Step>
+  {/* <Step title="Each integration adds complexity">
+    Supporting Stripe, Auth0, SendGrid, and other services means maintaining separate webhook handlers, each with their own quirks and failure modes.
+  </Step> */}
+</Steps>
+
+## Attempts to "solve" this
+
+Most developers throw a webhook gateway in front of their webhook endpoint and call it a day. This is a common pattern, and it has a few upsides, such as retries, where the gateway will retry failed webhooks. But it once again leaves you with the same issues as before, such as partial updates, out of order events, and more.
+
+<img
+  className="block dark:hidden"
+  src="/images/sanebase-vs-now-2.png"
+  alt="How this is currently 'solved'"
+/>
+<img
+  className="hidden dark:block"
+  src="/images/sanebase-vs-now-2-dark.png"
+  alt="How this is currently 'solved'"
+/>
+
+## Enter Sanebase
+
+Sanebase makes it stupidly simple to keep your app in sync with Stripe.
+
+For example, in our [Unified Ingest mode](sync-modes/unified-ingest/overview), it acts as an intelligent middleware layer between Stripe and your application. Instead of dealing with raw webhooks, you get clean, consolidated data updates.
+
+<img
+  className="block dark:hidden"
+  src="/images/sanebase-vs-now-3.png"
+  alt="How It Works"
+/>
+<img
+  className="hidden dark:block"
+  src="/images/sanebase-vs-now-3-dark.png"
+  alt="How It Works"
+/>
+
+Sanebase also has [other sync modes](sync-modes/index) which let you **ditch webhooks completely**.
+
+## Get started
+
+<CardGroup cols={2}>
+  <Card
+    title="Try Sanebase Cloud"
+    icon="arrow-right"
+    href="https://sanebase.dev/sign-in"
+    arrow={false}
+  >
+    Get started in minutes. We have a free plan for early stage startups and
+    indie developers.
+  </Card>
+  <Card title="Explore our sync modes" icon="refresh-cw" href="sync-modes">
+    Check out the different sync modes available on Sanebase. It offers more
+    than just unified webhooks.
+  </Card>
+</CardGroup>{" "}

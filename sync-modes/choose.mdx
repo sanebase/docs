@@ -1,0 +1,51 @@
+---
+title: Choosing sync modes
+description: "A quick intro on the various sync modes available on Sanebase"
+---
+
+## Which sync mode should you use?
+
+<Steps titleSize="h3">
+  <Step title="Unified Ingest" icon="merge">
+    > 10x better than direct webhooks but still a webhook
+
+    If you don't want to move away from webhooks but you want a much better webhook experience then this mode is for you. This is the sync mode that is available in our open source version.
+
+    `Open-source` `Cloud`
+    <CardGroup cols={2}>
+        <Card title={<> Read more <Icon icon="chevron-right" /> </>}  href="sync-modes/unified-ingest">
+      </Card>
+    </CardGroup>
+
+  </Step>
+  <Step title="Instant Access" icon="zap">
+    > Ditch webhooks and fetch on demand
+
+    If you have been waiting to move away from webhooks as much as possible, then this option is for you. Using our API/SDK, you can directly access live Stripe data without worrying about being rate limited or throttled.
+
+    {/* and an overly complicated SDK that is overkill for 90% of the use cases. */}
+
+    {/* so you never need to wait for a webhook again. */}
+
+    `Cloud`
+
+    <CardGroup cols={2}>
+        <Card title={<> Read more <Icon icon="chevron-right" /> </>}  href="sync-modes/instant-access">
+      </Card>
+    </CardGroup>
+
+  </Step>
+  <Step title="Deep Sync" icon="database-zap">
+    > Stripe data, in your own database. Set it up and forget Sanebase. ✨
+
+    If you would rather query and reference Stripe data within your own database, directly from your application code (who wouldn't want to?), then chose this. Real-time Stripe data will stream into secure dedicated tables in your database so you can use it just like other data.
+
+    `Cloud`
+
+    <CardGroup cols={2}>
+        <Card title={<> Read more <Icon icon="chevron-right" /> </>}  href="sync-modes/deep-sync">
+      </Card>
+    </CardGroup>
+
+  </Step>
+</Steps>
