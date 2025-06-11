@@ -1,0 +1,7 @@
+.mdx-content table > thead > tr > th {
+	text-align: left;
+}
+
+html {
+	overflow-y: scroll;
+}

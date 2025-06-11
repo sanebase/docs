@@ -28,6 +28,10 @@
           {
             "group": "Sync modes",
             "pages": ["sync-modes/index", "sync-modes/choose"]
+          },
+          {
+            "group": "Compare",
+            "pages": ["open-source-vs-cloud"]
           }
         ]
       },

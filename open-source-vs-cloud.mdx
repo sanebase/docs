@@ -1,0 +1,52 @@
+---
+title: Open source vs Cloud
+---
+
+{/* Like with most open source software, there are pros and cons with self-hosting. */}
+
+## Feature comparison
+
+|                                                            | 🌈  | Open source                                                                                                                                                                 | ☁️  | Cloud (even Free plan)                                                                                                                               |
+| ---------------------------------------------------------- | --- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Webhook madness**                                        | ✅  | Eliminated                                                                                                                                                                  | ✅  | Eliminated                                                                                                                                           |
+| **Hosting**                                                | ✅  | Self-hosted                                                                                                                                                                 | ✅  | Cloud                                                                                                                                                |
+| **Edge first performance**                                 | ✅  | Yes                                                                                                                                                                         | ✅  | Yes                                                                                                                                                  |
+| **Low latency updates**                                    | ✅  | Yes                                                                                                                                                                         | ✅  | Yes                                                                                                                                                  |
+| **Same core engine**                                       | ✅  | Yes                                                                                                                                                                         | ✅  | Yes                                                                                                                                                  |
+| **Complete per-customer data isolation**                   | ✅  | Yes                                                                                                                                                                         | ✅  | Yes                                                                                                                                                  |
+| [Unified ingest mode](/sync-modes/unified-ingest/overview) | ✅  | <Tooltip tip="Refetches data on ingest as needed. High chances of hitting Stripe rate limits if you get more than a few parallel transactions.">Refetch on ingest</Tooltip> | ✅  | <Tooltip tip="Uses advanced state transformation semantics with fallbacks that eliminates re-fetching and rate limits">True Unified ingest</Tooltip> |
+| **↳ Dependable unified webhooks**                          | ✅  | Yes                                                                                                                                                                         | ✅  | Yes                                                                                                                                                  |
+| **↳ Automatic retries to your endpoint**                   | ✅  | Yes                                                                                                                                                                         | ✅  | Yes                                                                                                                                                  |
+| **↳ Rate limits**                                          | ⚠️  | Higher chances of hitting Stripe rate limits if exceeding ~$10-50K ARR                                                                                                      | ✅  | Practically impossible even at $100M+ ARR, graceful fallbacks built in if ever needed                                                                |
+| [Instant access mode](/sync-modes/instant-access/overview) | ❌  | Cloud only                                                                                                                                                                  | ✅  | Included                                                                                                                                             |
+| [Deep sync mode](/sync-modes/deep-sync/overview)           | ❌  | Cloud only                                                                                                                                                                  | ✅  | Included                                                                                                                                             |
+| **Infra monitoring & maintenance**                         | ⚠️  | You / your team is responsible                                                                                                                                              | ✅  | Set it up once and never worry about syncing billing state again                                                                                     |
+| **Product focus**                                          | ⚠️  | Build for & debug billing webhooks                                                                                                                                          | ✅  | Focus on your core product 🎯                                                                                                                        |
+| **Zero downtime**                                          | ⚠️  | Webhooks need to be paused during version upgrades                                                                                                                          | ✅  | Zero downtime                                                                                                                                        |
+| **API schema updates**                                     | ⚠️  | You need to manage updating Sanebase as soon as possible to ensure compatibility                                                                                            | ✅  | Never worry about API updates again                                                                                                                  |
+| **Data sovereignty**                                       | ✅  | Use your own cloud infra                                                                                                                                                    | ✅  | Bring your own cloud (Enterprise)                                                                                                                    |
+
+## Cost breakdown
+
+### Open source
+
+- Cloudflare Workers -> \$0 or \$5/mo+
+- Neon Postgres -> \$0 or \$20/mo+
+- Maintenance cost -> \$1,200/month or ~16 hours/month
+  - Sanebase is built with minimal maintenance in mind.
+  - So lets say, 1 engineer spends 4 hours a week on maintenance.
+  - Engineer's hourly rate: \$75/hour (varies by country; adjust as needed).
+  - Weekly Cost: 4 hours x \$75 = \$300/week
+  - Monthly Cost: \$300 x 4 = \$1,200/month
+
+### Cloud
+
+- Start for free, stay free till you exceed some minimum ARR.
+- Pricing scales as your transactions increase
+- Costs \$20/mo per 100K ARR
+  - Even at \$1M ARR, you pay only \$200/mo to eliminate serious state-sync chaos.
+  - Once you cross \$1M+ ARR, maintenance time/cost skyrockets debugging sync issues.
+- You're not paying for a webhook gateway, your paying for proper state management, peace of mind and freedom from debugging Stripe webhooks.
+
+Find more details [here](https://sanebase.dev/pricing).
+
