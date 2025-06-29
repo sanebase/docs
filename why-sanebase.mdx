@@ -18,7 +18,7 @@ If you've ever processed real customer transactions in production, even at a sma
 
 {/* PS: You can check out Theo's open source guide [here](https://github.com/t3dotgg/stripe-recommendations). */}
 
-## Webhooks &mdash; icebergs that will sink your Stripe integration
+## Webhooks &mdash; icebergs that sink your engineering time
 
 Webhooks look deceptively simple at first. Wire up an endpoint to receive updates and you're done, right? Not so fast.
 
@@ -62,7 +62,7 @@ In reality, there are so many things that can (and will) go wrong:
   </Step> */}
 </Steps>
 
-## Attempts to "solve" this
+## Typical attempts to solve this
 
 Most developers throw a webhook gateway in front of their webhook endpoint and call it a day. This is a common pattern, and it has a few upsides, such as retries, where the gateway will retry failed webhooks. But it once again leaves you with the same issues as before, such as partial updates, out of order events, and more.
 

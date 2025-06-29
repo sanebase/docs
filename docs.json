@@ -26,25 +26,20 @@
         "tab": "Sync modes",
         "groups": [
           {
-            "group": "Sync modes",
+            "group": "Overview",
             "pages": ["sync-modes/index", "sync-modes/choose"]
+          },
+          {
+            "group": "Sync modes",
+            "pages": [
+              "sync-modes/unified-ingest/overview",
+              "sync-modes/instant-access/overview",
+              "sync-modes/deep-sync/overview"
+            ]
           },
           {
             "group": "Compare",
             "pages": ["open-source-vs-cloud"]
-          }
-        ]
-      },
-      {
-        "tab": "API / SDK reference",
-        "groups": [
-          {
-            "group": "API Documentation",
-            "pages": ["reference/introduction"]
-          },
-          {
-            "group": "Endpoint Examples",
-            "pages": ["reference/endpoint/get"]
           }
         ]
       }
